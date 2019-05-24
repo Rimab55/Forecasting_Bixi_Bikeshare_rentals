@@ -1,4 +1,6 @@
-<img style="float: right;" src="Bixi_logo.svg.png" width=200>
+![gif](bixi.gif)
+
+# Motivation
 
 - Bixi is a nonprofit organization created by the city of Montreal to manage its bike sharing system
 - 7,250 bikes, 540 stations and 5,3M rides taken in 2018

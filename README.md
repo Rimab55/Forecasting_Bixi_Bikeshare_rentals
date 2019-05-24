@@ -45,6 +45,15 @@ From the heatmap below, we can see how rentals occur during a typical week, from
 There are missing values for some hours for some days, the prior hour weather description will be used as a proxy as it is the best approximation and all values are necessary to use weather features as exogenous regressors (using Pandas' bfill).
 
 # Part 2 : Modeling
+
+I thought it would be interesting to look at 4 different models, with:
+- Time dependent  :
+  - Time series Modeling
+  - FBProphet
+- Non time dependent:
+  - Random Forest regressor
+  - XGBoost Regressor
+
 #### Chosen Metrics : RMSE, R2
 
 - **RMSE** will be used as the main metric to choose the best model as it is the most interpretable and can be translated into the average number of bikes the model is off by. It measures the square root of the average sum of squared residuals of the model.
@@ -70,20 +79,6 @@ df = df.drop(['date_hour'],axis = 1)
 ```
 The data now looks something like this:
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">

@@ -14,9 +14,9 @@
 - Weather data: www.wunderground.com
 - Holidays: https://www.officeholidays.com/countries/canada/quebec/2018.php
 
-# EDA
+# Part 1: EDA
 
-To start, let's look at usage patterns throughout the day, a typical week and through the months. Bixi is currently available around from April to November inclusive.
+To start, let's explore trip history patterns for 2018 throughout the day, a typical week and through the months. Bixi is currently available around from April to November inclusive.
 
 From the bar plot below, we can see that it is a bimodal distribution, there are two peaks around the morning and evening rush hour (hours 8 and 17).  At 4AM, usage is the lowest.
 

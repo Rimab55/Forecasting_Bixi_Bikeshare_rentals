@@ -57,7 +57,7 @@ I thought it would be interesting to look at 4 different models, with:
 #### Chosen Metrics : RMSE, R2
 
 - **RMSE** will be used as the main metric to choose the best model as it is the most interpretable and can be translated into the average number of bikes the model is off by. It measures the square root of the average sum of squared residuals of the model.
-  - RMSE = $\sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_j-\hat{y_j})^{2}}$
+  - RMSE = ![equation](https://latex.codecogs.com/gif.latex?%5Csqrt%7B%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28y_j-%5Chat%7By_j%7D%29%5E%7B2%7D%7D)
 
 - **R2** will be used as a second metric if models show a similar RMSE. R2 measures the variance explained by the model in comparison to the total variance.
 

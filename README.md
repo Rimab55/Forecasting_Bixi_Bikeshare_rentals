@@ -275,7 +275,7 @@ The optimal parameters for XGBoost are :
     {'gamma': 3, 'learning_rate': 0.15, 'max_depth': 4, 'n_estimators': 90}
 
 - Gamma parameter is for regularizing and attempting to reduce overfitting the training set and random error
-- Learning rate parameter: After 0.15, performance starts to decreased
+- Learning rate parameter: After 0.15, performance starts to decrease
 - Max depth: Again, to avoid overfitting, shallow trees are prefered.
 
 With XGBoost, the model seems to overfit the training set, even with shallow trees (max_depth = 4). There is still work to be done to include some type of parameterization and penalize overfitting. Although the model overfits the training set, the testing set shows better results than the Random Forest regressor as the difference in RMSE and R2 between Train and Test is much closer.

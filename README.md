@@ -261,7 +261,7 @@ The plot below shows the forecast for a sample of the test period (one week ~ 16
 
 ### XGBoost - Boosted trees
 
-Next, XG Boost (boosted trees) is a good choice to obtain a better forecast which minimizes RMSE. After gridsearch,
+Next, XG Boost (boosted trees) is a good choice to obtain a better forecast which minimizes RMSE. Contrarly to Random Forest Algorithm, which uses a bagging approach, XGBoost uses an iterative approach and combines multiple weak learners into a strong learner. After gridsearch,
 ```python
 
 reg = xgb.XGBRegressor()

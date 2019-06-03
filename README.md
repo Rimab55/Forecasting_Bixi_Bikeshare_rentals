@@ -591,7 +591,7 @@ Results for  Stacked Model
 ## Next steps
 
 - To improve the hourly forecast, it would be interesting to look at:
- - Linear Regression
+ - Adding more regularization hyperparameters to reduce overfitting
  - Deep Learning with LSTM because of weather or event in the city that will hike up the demand
 - There is still room for improvement as most models are overfitting the training set and are at risk of generalizing poorly to the testing period.
 - I am interested in looking at rebalancing docking stations throughout the day and have requested data directly from the Bixi team, which they have recenlty shared.

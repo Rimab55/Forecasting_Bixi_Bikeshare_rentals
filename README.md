@@ -51,8 +51,9 @@ I thought it would be interesting to look at 4 different models, with two approa
 - Non time dependent models:
   - Random Forest regressor
   - XGBoost Regressor
+  
 
-  - Time dependent models :
+- Time dependent models :
     - Time series Modeling
     - FBProphet
 

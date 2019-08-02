@@ -18,15 +18,15 @@
 
 To start, let's explore trip history patterns for 2018 throughout the day, a typical week and throughout the months. Bixi is currently available around from April to November inclusive.
 
-From the bar plot below, we can see that it is a bimodal distribution, there are two peaks around the morning and evening rush hour (hours 8 and 17).  At 4AM, usage is the lowest.
+From the bar plot below, we can see that it is a bimodal distribution, there are two peaks around the morning and evening rush hour (hours 8 and 17).  At 4AM, usage is the lowest overall.
 
 ![png](EDA_Bixi_files/EDA_Bixi_8_0.png)
 
-Next, we can see that the usage pattern for different months (4-11 <=> April-November)  vary. In fact, rentals are the highest for May-September and the lowest for colder months and beginning and end of season which corresponds to the months ofApril, October and November.
+Next, we can see that the usage pattern for different months (4-11 <=> April-November)  vary. In fact, rentals are the highest for May-September and the lowest for colder months and beginning and end of season which corresponds to the months of April, October and November.
 
 ![png](EDA_Bixi_files/EDA_Bixi_17_1.png)
 
-From the heatmap below, we can see how rentals occur during a typical week, from blue (lowest) to red (highest), it is clear that weekends have a different pattern usage as there are no prominent pearks and rentals do not vary as much as week days which makes sense as more people work during the week days and use Bixis to commute. Also, weekends show a higher usage than week days around midnight.
+From the heatmap below, we can see how rentals occur during a typical week, from blue (lowest) to red (highest), it is clear that weekends have a different pattern usage as there are no prominent pearks and rentals do not vary as much as during the week days, which makes sense as more people work during weekdays and use Bixis to commute. Also, weekends show a slightly higher usage than week days around midnight.
 
 ![png](EDA_Bixi_files/EDA_Bixi_18_1.png)
 
@@ -34,23 +34,23 @@ From the heatmap below, we can see how rentals occur during a typical week, from
 - To identify which exogenous variables (X) into SARIMAX, looking at the correlation with bike rentals is useful.
 - "Heat index", "feels like", "temp" seem to bring the same information as they are almost perfectly correlated.
 - "UV index" and "humidity" are also correlated with the number of rentals.
-- Surprisingly, precipitation is not so correlated with bike usage.
+- Surprisingly, precipitation is not importantly correlated with bike usage (< 0.2). They are negatively correlated, as expected.
 - Another interesting fact is that **casual** users' bike usage is slightly more positively correlated with weather features such as temperature, uv_index and whether it has rained or not during their rental than **members**. Because both members and casual users are similarly correlated with weather, there will be no distinction between them for the purpose of forecasting the number of hourly bike rentals.
-- To select which regressor(s) to include in SARIMAX, Random Forest and FBprophet algorithms.
+- The heatmap can help with selecting which regressor(s) to include in SARIMAX, Random Forest and FBprophet algorithms.
 
 ![png](EDA_Bixi_files/EDA_Bixi_33_1.png)
 
 ## Missing values for weather
 
-There are missing values for some hours for some days, the prior hour weather description will be used as a proxy as it is the best approximation and all values are necessary to use weather features as exogenous regressors (using Pandas' bfill).
+There are missing values for some hours for some days, the prior hour's weather values will be used as a proxy as it is the best approximation. All values are necessary to use weather features as exogenous regressors, therefore the DF will be completed using Pandas' bfill.
 
 # Part 2 : Modeling
 
-I thought it would be interesting to look at 4 different models, with:
-- Time dependent  :
+I thought it would be interesting to look at 4 different models, with two approaches:
+- Time dependent models :
   - Time series Modeling
   - FBProphet
-- Non time dependent:
+- Non time dependent models:
   - Random Forest regressor
   - XGBoost Regressor
 

@@ -58,11 +58,10 @@ I thought it would be interesting to look at 4 different models, with two approa
 
 #### Chosen Metrics : RMSE, R2
 
-- **RMSE** will be used as the main metric to choose the best model as it is the most interpretable and can be translated into the average number of bikes the model is off by. It measures the square root of the average sum of squared residuals of the model.
+- **RMSE** will be used as the main metric for model optimization and model selection. RMSE is the most interpretable as it can be translated into the average number of bikes the model's prediction is off by. It measures the square root of the average sum of squared residuals of the model.
   - RMSE = ![equation](https://latex.codecogs.com/gif.latex?%5Csqrt%7B%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28y_j-%5Chat%7By_j%7D%29%5E%7B2%7D%7D)
 
 - **R2** will be used as a second metric if models show a similar RMSE. R2 measures the variance explained by the model in comparison to the total variance.
-
 
 ### Random Forest Regressor
 Contrarily to time series modeling, random forest regression forecasts the number of rented bikes by looking at every hour of the day independently from the past and attempts to explain the target variable with regressors, mainly composed of weather features and extracting information from the timestamp to be used as features.

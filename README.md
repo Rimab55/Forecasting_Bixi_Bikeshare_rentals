@@ -51,7 +51,7 @@ I thought it would be interesting to look at 4 different models, with two approa
 - Non time dependent models:
   - Random Forest regressor
   - XGBoost Regressor
-  
+
 
 - Time dependent models :
     - Time series Modeling
@@ -79,7 +79,7 @@ df['hour'] = df.date_hour.dt.hour
 df['month'] = df.date_hour.dt.month
 df = df.drop(['date_hour'],axis = 1)
 ```
-The data now looks something like this:
+The data now looks like this:
 
 <table border="1" class="dataframe">
   <thead>
@@ -175,10 +175,10 @@ def create_dummies(col_names, df):
 - day_ind: 1 if there is daylight or 0 otherwise;
 - month: month of the year, to avoid sense of magnitude, even if month has a logical order;
 - hour: hour of the day, to avoid sense of magnitude, even if hour has a logical order;
-- is_weekend: 1 is it is the weekend or 0 otherwise;
-- is_holiday: 1 is it is the weekend or 0 otherwise;
-- season: indicated whether the month is considered to be in the cold season or warmer season
-- rush_hour: indicated whether the specified hour is considered rush hour
+- is_weekend: 1 if it is the weekend or 0 otherwise;
+- is_holiday: 1 if it is a holiday or 0 otherwise;
+- season: added feature to indicate whether the month is considered to be in a cold season or in a warm season
+- rush_hour: added feature to indicate whether the specified hour is considered rush hour or not
 
 ### Defining regressors and target variable
 

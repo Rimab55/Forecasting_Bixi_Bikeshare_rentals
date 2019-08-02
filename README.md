@@ -47,12 +47,14 @@ There are missing values for some hours for some days, the prior hour's weather 
 # Part 2 : Modeling
 
 I thought it would be interesting to look at 4 different models, with two approaches:
-- Time dependent models :
-  - Time series Modeling
-  - FBProphet
+
 - Non time dependent models:
   - Random Forest regressor
   - XGBoost Regressor
+
+  - Time dependent models :
+    - Time series Modeling
+    - FBProphet
 
 #### Chosen Metrics : RMSE, R2
 
@@ -63,9 +65,9 @@ I thought it would be interesting to look at 4 different models, with two approa
 
 
 ### Random Forest Regressor
-Contrarily to time series modeling, random forest regression forecasts the number of rented bikes by looking at every hour of the day independently from the past and attempts to explain the target variable with regressors, mainly composed of weather features and extracting information from the timestamp.
+Contrarily to time series modeling, random forest regression forecasts the number of rented bikes by looking at every hour of the day independently from the past and attempts to explain the target variable with regressors, mainly composed of weather features and extracting information from the timestamp to be used as features.
 
-To do so, creating features is necessary:
+To do so, creating additional features is necessary:
 - Extracting hour & month from date to use as features
 - Additional feature for clustering months with similar weather (warm vs colder months)
 - Additional feature for hours of the day with similar bike usage due to rush hour

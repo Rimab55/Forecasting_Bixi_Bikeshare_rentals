@@ -346,7 +346,7 @@ def stationarity_check(df, window = 24):
 
 #### Stationarity check
 
-For the time series, the p-value is significantly low and we are over 99% confident that the time series is stationary according to the AD-Fuller test as the ADF statistic is well below the 1% critical value. This tells us that we can forecast using a SARIMAX model.
+For the Bixi rentals' time series, the p-value is significantly low and we are over 99% confident that the time series is stationary according to the AD-Fuller test as the ADF statistic is well below the 1% critical value. This tells us that we can forecast using a SARIMAX model.
 
 ![png](Time_Series-Stacked_files/Time_Series-Stacked_55_0.png)
 

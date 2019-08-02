@@ -186,10 +186,11 @@ def create_dummies(col_names, df):
 X_rf = df.drop(['bixi_rentals'], axis = 1)
 y_rf = df[['bixi_rentals']].values.ravel()
 ```
-For each model, I create a function that runs a grid search and find optimal parameters which minimize MSE as the RMSE is the metric of choice for this problem.
+For each model, I create a function that runs a grid search to find the optimal parameters which minimize MSE as the RMSE is the metric of choice for this problem.
+
 
 ```python
-def grid_search_RFC(X, y, max_depth = [8], max_features = [30], n_estimators = [350]):
+def grid_search_RFC(X, y, max_depth = [8,10,12], max_features = [10,20,30], n_estimators = [200,300,350,47700771594825]):
     """
     function to grid search random forest regressor and find optimal parameters minimizing MSE
 

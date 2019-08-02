@@ -242,7 +242,7 @@ def metrics_RF(X,y,test_size = 1309):
 ```python
 rf, y_train, y_train_hat, y_test, y_test_hat = fit_predict_RF(X_rf, y_rf, test_size = 1309)
 ```
-Looking at the RMSE and R2 scores, it is clear than the random forest regressor is overfitting the training set: R2 test is around 0.15 > R2 train, which is high even with precautions to avoid overfitting, such as building shallow trees. More work is still needed to avoid this situation as it is currently fitting random noise present in the data.
+Looking at the RMSE and R2 scores, it is clear than the random forest regressor is overfitting the training set: R2 test is around 0.15 higher than R2 train, which is high even with precautions taken to avoid overfitting, such as building shallow trees. More work is still needed to avoid this situation as it seems to currently fit random noise present in the data.
 
     RMSE_train: 232.80255001360123; R2_train : 0.9352170482650859
     RMSE_test: 266.4843818264154; R2_test : 0.7986445519725162

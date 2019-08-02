@@ -256,7 +256,7 @@ The plot below shows the forecast for a sample of the test period (one week ~ 16
 - There is no clear pattern in the error (in yellow)
 - The forecasted number of rentals seems to properly fit the observed values for week days, but seems to show a poor fit for the weekends (September 22, 23 and 29).
 - There is also a large error (around 1000) on September 21, the forecast is much higher than the observed values.
-- All errors are within 1000, which is great for the overall city at a given hour.
+- All errors are within 1000, which is acceptable for the overall city at a given hour.
 
 
 ![png](Time_Series-Stacked_files/Time_Series-Stacked_32_0.png)
@@ -281,7 +281,7 @@ The optimal parameters for XGBoost are :
 - Learning rate parameter: After 0.15, performance starts to decrease
 - Max depth: Again, to avoid overfitting, shallow trees are prefered.
 
-With XGBoost, the model seems to overfit the training set, even with shallow trees (max_depth = 4). There is still work to be done to include some type of parameterization and penalize overfitting. Although the model overfits the training set, the testing set shows better results than the Random Forest regressor as the difference in RMSE and R2 between Train and Test is much closer.
+With XGBoost, the model seems to performb better on the test data but seems to overfit the training data, even with shallow trees (max_depth = 4). There is still work to be done to include some type of parameterization and penalize overfitting. Although the model overfits the training set, the testing set shows better results than the Random Forest regressor as the difference in RMSE and R2 between Train and Test is much closer.
 
     RMSE_train: 211.79209138875382; R2_train : 0.946382724285513
     RMSE_test: 228.9684764748469; R2_test : 0.8513478305423114
@@ -297,7 +297,7 @@ SARIMAX(p,d,q)(P,D,Q)m has 7 parameters and is used to model a seasonal time ser
 - p: Trend autoregressive order i.e. how many previous lags are used for prediction
 - d: Trend difference order i.e. how many times the TS was differenced
 - q: Trend moving average order
-- P: Seasonal parameter for autoregressive order. The hyperparameter m needs to be fixed before setting P,D,Q. For example, if m is set to 24 hours, then setting P = 1 means that the model will offset 24 periods (m*P) to make a prediction.
+- P: Seasonal parameter for autoregressive order. The hyperparameter m needs to be set before setting P,D,Q. For example, if m is set to 24 hours, then setting P = 1 means that the model will offset 24 periods (m*P) to make a prediction.
 
 -  $t_1 = t_0 * (m*P)$
 
@@ -305,7 +305,12 @@ SARIMAX(p,d,q)(P,D,Q)m has 7 parameters and is used to model a seasonal time ser
 - Q: Seasonal moving average order
 - m: Number of time steps for a season to repeat
 
-First, to use SARIMAX modeling, the time series needs to be stationary, meaning that it should not show any obvious trend or seasonality, and the rolling mean and standard deviation should be constant. It will be done with the following function which runs the Adfuller test, where the null hypothesis is that the time series is not stationary. Therefore if we reject the null hypothesis with a confidence level of choice (95%), we can declare that the time series is in fact stationary.
+First, to use SARIMAX modeling, the time series needs to be stationary, meaning that it should not show any obvious trend or seasonality, and the rolling mean and standard deviation should be constant.
+
+Side note on Stationarity:
+SARIMAX assumes a linear regression on previous values (or/and errors). If there is a trend in the data or a varying mean and/or variance, then the relationship to past values changes over time as well (xt = alpha + Beta*xt-h + error) and Beta varies over time. By stationarizing the time series, we can solve for a constant Beta and assume a linear relationship for the autoregressive (AR) component. Similarly, if we have a changing variance over time, then we cannot use SARIMAX as the relationship between values is not linear (it would be exponential or other non-linear relationship) and the assumption of linearity is violated!
+
+ To check for stationarity, I use the following function. It runs the Adfuller test, where the null hypothesis is that the time series is not stationary. Therefore, if we are able reject the null hypothesis with a confidence level of choice (95%), we can declare that the time series is in fact stationary.
 
 ```python
 def stationarity_check(df, window = 24):

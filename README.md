@@ -264,7 +264,7 @@ The plot below shows the forecast for a sample of the test period (one week ~ 16
 
 ### XGBoost - Boosted trees
 
-Next, XG Boost (boosted trees) is a good choice to obtain a better forecast which minimizes RMSE. Contrarly to Random Forest Algorithm, which uses a bagging approach, XGBoost uses an iterative approach and combines multiple weak learners into a strong learner. After gridsearch,
+Next, XG Boost (boosted trees) is a good choice to obtain a better forecast which minimizes RMSE. Contrarily to the Random Forest Algorithm, which uses a bagging approach and aggregates multiple weak learners into a strong one, XGBoost uses an iterative approach and learns from its previous errors at each consequent tree. After gridsearch,
 ```python
 
 reg = xgb.XGBRegressor()
@@ -277,11 +277,12 @@ The optimal parameters for XGBoost are :
 
     {'gamma': 3, 'learning_rate': 0.15, 'max_depth': 4, 'n_estimators': 90}
 
-- Gamma parameter is for regularizing and attempting to reduce overfitting the training set and random error
-- Learning rate parameter: After 0.15, performance starts to decrease
-- Max depth: Again, to avoid overfitting, shallow trees are prefered.
+- Gamma parameter is for regularizing and attempting to reduce overfitting the training set and random error.
+- Learning rate parameter: After 0.15, performance starts to decrease.
+- Max depth: Again, to avoid overfitting, shallow trees are preferred.
+- N_estimators: Number in trees in forest.
 
-With XGBoost, the model seems to performb better on the test data but seems to overfit the training data, even with shallow trees (max_depth = 4). There is still work to be done to include some type of parameterization and penalize overfitting. Although the model overfits the training set, the testing set shows better results than the Random Forest regressor as the difference in RMSE and R2 between Train and Test is much closer.
+With XGBoost, the model seems to perform better on the test data but seems to overfit the training data, even with shallow trees (max_depth = 4). This indicates that there is still work to be done to include some type of parametrization and penalize overfitting. Although the model overfits the training set, the test set shows better results than the Random Forest regressor as the difference in RMSE and R2 between Train and Test is much closer.
 
     RMSE_train: 211.79209138875382; R2_train : 0.946382724285513
     RMSE_test: 228.9684764748469; R2_test : 0.8513478305423114
@@ -297,7 +298,7 @@ SARIMAX(p,d,q)(P,D,Q)m has 7 parameters and is used to model a seasonal time ser
 - p: Trend autoregressive order i.e. how many previous lags are used for prediction
 - d: Trend difference order i.e. how many times the TS was differenced
 - q: Trend moving average order
-- P: Seasonal parameter for autoregressive order. The hyperparameter m needs to be set before setting P,D,Q. For example, if m is set to 24 hours, then setting P = 1 means that the model will offset 24 periods (m*P) to make a prediction.
+- P: Seasonal parameter for autoregressive order. The hyperparameter m needs to be set before setting P,D,Q. For example, if m is set to 24 hours, then setting P = 1 means that the model  offsets 24 periods in total (m*P = 24 * 1) to make a prediction.
 
 -  $t_1 = t_0 * (m*P)$
 
